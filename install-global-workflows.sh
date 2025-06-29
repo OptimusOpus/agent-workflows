@@ -117,4 +117,9 @@ echo -e "  • ${BLUE}/execute [TICKET-ID]${NC} - Expert development agent for i
 echo -e "  • ${BLUE}/pr-review [PR-NUMBER]${NC} - Comprehensive PR analysis and code review"
 echo -e "  • ${BLUE}/qa-check [PR-NUMBER]${NC} - Logical QA validation against requirements"
 
-echo -e "\n${YELLOW}Note: Restart your Windsurf and Claude applications to use the new workflows and commands.${NC}"
+echo -e "\n${BLUE}--- Next Steps ---${NC}"
+echo -e "The global workflows are now installed."
+echo -e "To use them in another project, run the following script from that project's root directory:"
+echo -e "\n  ${GREEN}cp /path/to/agent-workflows/link-global-workflows.sh . && ./link-global-workflows.sh${NC}"
+echo -e "\nThis will create symbolic links to the global workflows, making them available in your project."
+echo -e "\n${YELLOW}Remember to restart your editor after linking to see the new workflows and commands.${NC}"

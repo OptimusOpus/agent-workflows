@@ -54,7 +54,11 @@ git clone https://github.com/your-github-username/agent-workflows.git
 cd agent-workflows
 ./install-global-workflows.sh
 
-# 2. Create your first ticket
+# 2. In any other project, link the global workflows
+cp /path/to/agent-workflows/link-global-workflows.sh .
+./link-global-workflows.sh
+
+# 3. Create your first ticket
 ./create-ticket.sh PROJECT-123
 
 # 3. Start development with AI assistance
@@ -146,24 +150,34 @@ This two-tool approach creates a more efficient workflow:
 
 ## Installation
 
-### Automatic Global Installation (Recommended)
+### Step 1: Global Installation (Run Once)
 
-The installation script automatically sets up workflows and commands for all your projects:
+First, install the workflows to a central location on your system. You only need to do this once.
 
 ```bash
 # Clone the repository
 git clone https://github.com/your-github-username/agent-workflows.git
 cd agent-workflows
 
-# Run the interactive installer
+# Run the global installer
 ./install-global-workflows.sh
 ```
 
-The installer will:
-- Create global directories (`~/.windsurf/workflows`, `~/.claude/commands`)
-- Copy workflow files to the appropriate locations
-- Prompt before overwriting existing files
-- Verify installation success
+This script copies the workflows to `~/.windsurf/workflows` and `~/.claude/commands`.
+
+### Step 2: Link to Your Projects (Run in Each Project)
+
+To use the global workflows in a specific project, you need to link them. Navigate to your project's root directory and run:
+
+```bash
+# Copy the linking script to your project and run it
+cp /path/to/agent-workflows/link-global-workflows.sh .
+./link-global-workflows.sh
+```
+
+This creates symbolic links from the global directory to your project's local `.windsurf/workflows` and `.claude/commands` directories. It's safe to run this multiple times.
+
+**That's it!** After linking, restart your editor, and the workflows will be available.
 
 ### Manual Installation
 
@@ -179,9 +193,11 @@ mkdir -p ~/.claude/commands
 cp claude-commands/* ~/.claude/commands/
 ```
 
+
+
 ### Verification
 
-After installation, verify everything is working:
+After installation and configuration, verify everything is working:
 
 ```bash
 # Check workflow files are in place
@@ -230,6 +246,71 @@ ls TEST-001/
 
 # Address PR feedback (in Claude Code)
 /address-pr-comments 124
+```
+
+### Example 3: Performance Optimization
+
+```bash
+# Create ticket for performance work
+./create-ticket.sh PERF-456
+
+# Planning and research (in Windsurf)
+/research PERF-456
+/planning PERF-456
+
+# Performance analysis and optimization (in Claude Code)
+/performance-audit PERF-456
+
+# Validate improvements (in Claude Code)
+/pr-review 125
+/qa-check 125
+```
+
+### Example 4: Security Hardening
+
+```bash
+# Create security ticket
+./create-ticket.sh SEC-123
+
+# Security research (in Windsurf)
+/research SEC-123
+
+# Security analysis and fixes (in Claude Code)
+/security-scan SEC-123
+
+# Review and validation (in Claude Code)
+/pr-review 126
+/qa-check 126
+```
+
+### Example 5: Critical Hotfix
+
+```bash
+# Create hotfix ticket
+./create-ticket.sh HOTFIX-789
+
+# Emergency fix (in Claude Code - streamlined process)
+/hotfix HOTFIX-789
+
+# Fast validation and deployment
+/pr-review 127
+/qa-check 127
+```
+
+### Example 6: Code Refactoring
+
+```bash
+# Create refactoring ticket
+./create-ticket.sh REFACTOR-321
+
+# Refactoring planning (in Windsurf)
+/planning REFACTOR-321
+
+# Systematic refactoring (in Claude Code)
+/refactor REFACTOR-321
+
+# Quality validation (in Claude Code)
+/pr-review 128
 ```
 
 ## Workflow Phases
@@ -299,9 +380,21 @@ ls TEST-001/
 - `/address-pr-comments` - Handle pull request feedback
 
 ### Claude Code Commands
+
+#### Core Development Workflow
 - `/execute [TICKET-ID]` - Expert development agent for implementation
 - `/pr-review [PR-NUMBER]` - Comprehensive code review and analysis
 - `/qa-check [PR-NUMBER]` - Quality assurance validation
+
+#### Lifecycle Management
+- `/ticket-status [TICKET-ID]` - Get comprehensive ticket progress dashboard
+- `/close-ticket [TICKET-ID]` - Complete ticket closure with final documentation
+- `/hotfix [TICKET-ID]` - Fast-track critical bug fixes with streamlined workflow
+
+#### Development Enhancement
+- `/refactor [TICKET-ID]` - Systematic code refactoring with safety checks
+- `/performance-audit [TICKET-ID]` - Analyze and optimize performance bottlenecks
+- `/security-scan [TICKET-ID]` - Deep security analysis and vulnerability assessment
 
 ## File Structure
 
@@ -309,11 +402,15 @@ Each ticket creates a structured directory:
 
 ```
 ./[TICKET-ID]/
-├── [TICKET-ID].md      # Main ticket description and requirements
-├── research.md         # Technical research and codebase analysis
-├── plan.md            # Implementation approach and architecture
-├── review.md          # Code review findings and recommendations
-└── qa.md              # QA test results and validation report
+├── [TICKET-ID].md         # Main ticket description and requirements
+├── research.md            # Technical research and codebase analysis
+├── plan.md               # Implementation approach and architecture
+├── review.md             # Code review findings and recommendations
+├── qa.md                 # QA test results and validation report
+├── CLOSURE.md            # Final closure documentation (when using /close-ticket)
+├── refactor-log.md       # Refactoring execution log (when using /refactor)
+├── performance-report.md # Performance analysis report (when using /performance-audit)
+└── security-report.md    # Security assessment report (when using /security-scan)
 ```
 
 ### File Purposes
@@ -323,6 +420,10 @@ Each ticket creates a structured directory:
 - **`plan.md`** - Implementation strategy, file changes, testing approach
 - **`review.md`** - Code quality analysis, security considerations, improvements
 - **`qa.md`** - Business logic validation, user workflow testing, deployment readiness
+- **`CLOSURE.md`** - Complete ticket closure summary with lessons learned and metrics
+- **`refactor-log.md`** - Detailed refactoring execution log with before/after metrics
+- **`performance-report.md`** - Comprehensive performance analysis and optimization results
+- **`security-report.md`** - Security vulnerability assessment and remediation documentation
 
 ## Troubleshooting
 
@@ -347,13 +448,16 @@ chmod +x create-ticket.sh
 ls -la
 ```
 
-**Q: Workflows not appearing in Windsurf**
-```bash
-# Check workflow directory
-ls ~/.windsurf/workflows/
+**Q: Workflows not appearing in my project**
 
-# Ensure files have correct extension (.md for Windsurf workflows)
+Did you run the linking script in your project's root directory? 
+
+```bash
+# From your project's root folder:
+./link-global-workflows.sh
 ```
+
+After linking, you must **restart your editor** (VS Code, etc.) for it to detect the new workflows.
 
 **Q: Claude commands not working**
 ```bash
@@ -410,6 +514,9 @@ git checkout -b feature/your-improvement
 - Performance improvements
 - Documentation enhancements
 - Testing frameworks integration
+- New Claude Code commands for specialized workflows
+- Enhanced security scanning integrations
+- Performance monitoring and alerting improvements
 
 ## License
 
