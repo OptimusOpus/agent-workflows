@@ -125,6 +125,8 @@ While both Windsurf and Claude Code are powerful AI development tools, they exce
 - **Documentation generation** - Optimized for creating comprehensive research and planning documents
 - **Decision tracking** - Better at capturing and organizing planning decisions and rationale
 
+Windsurf workflows are structured, repeatable processes that guide you through essential development activities such as requirements gathering, research, planning, and documenting decisions. Unlike simple checklists, Windsurf workflows are deeply integrated with your project’s context and codebase.
+
 ### ⚡ Claude Code's Implementation Advantages
 
 **Execution Optimized**
