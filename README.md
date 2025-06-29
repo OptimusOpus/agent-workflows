@@ -98,6 +98,52 @@ Each ticket maintains its own directory with structured documentation, ensuring 
 3. **Living Documentation** - Files are updated throughout the development process
 4. **AI Command Integration** - Custom commands that understand your project context
 
+## Why Windsurf for Planning?
+
+**The right tool for the right phase.**
+
+While both Windsurf and Claude Code are powerful AI development tools, they excel in different areas. Here's why we strategically use each tool for specific phases:
+
+### 🧠 Windsurf's Planning Advantages
+
+**Local Codebase Intelligence**
+- **Deep code indexing** - Windsurf maintains a comprehensive understanding of your entire codebase
+- **Contextual awareness** - Better at understanding relationships between files, functions, and architecture
+- **Efficient exploration** - Superior for browsing and analyzing existing code patterns
+
+**Research & Analysis Optimized**
+- **Plan mode** - Designed for systematic thinking without premature execution  
+- **Multi-file analysis** - Excellent at understanding complex codebases and dependencies
+- **Architecture comprehension** - Better at grasping high-level system design and integration points
+
+**Collaborative Planning**
+- **Interactive workflows** - Built-in workflows guide systematic requirements gathering
+- **Documentation generation** - Optimized for creating comprehensive research and planning documents
+- **Decision tracking** - Better at capturing and organizing planning decisions and rationale
+
+### ⚡ Claude Code's Implementation Advantages
+
+**Execution Optimized**
+- **Code modification focus** - Designed specifically for writing, editing, and refactoring code
+- **Tool integration** - Superior integration with development tools (git, testing, linting)
+- **Performance focus** - Optimized for rapid code changes and validation
+
+**Implementation Workflow**
+- **TDD support** - Better at following test-driven development practices
+- **Systematic execution** - Excellent at methodically implementing planned changes
+- **Quality assurance** - Built-in support for code review and testing workflows
+
+### 🎯 Strategic Tool Alignment
+
+This two-tool approach creates a more efficient workflow:
+
+1. **Windsurf handles exploration** - Use when you need to understand, research, and plan
+2. **Claude Code handles execution** - Use when you're ready to implement, test, and deploy
+3. **Complementary strengths** - Each tool's capabilities enhance the other's effectiveness
+4. **Context preservation** - Documentation bridges between tools, maintaining continuity
+
+**Result:** You get the best of both worlds - thoughtful planning with efficient execution.
+
 ## Installation
 
 ### Automatic Global Installation (Recommended)
